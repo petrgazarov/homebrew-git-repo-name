@@ -4,28 +4,28 @@
 class GitRepoName < Formula
   desc "Sync git repository names between remote and local"
   homepage "https://github.com/petrgazarov/git-repo-name"
-  version "0.1.0"
+  version "0.1.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-x86_64-apple-darwin"
-      sha256 "de7237eb9766c334b1565f86408e78f191d2914c7805cda0bcbe0f5fe1b2be1a"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-x86_64-apple-darwin"
+      sha256 "be3acb917b26371a8eaa255ec8a8243ca5c6d38c86b2146883a3e5fafc2f9e2d"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-aarch64-apple-darwin"
-      sha256 "507e1359c32153b30711f935844f0a96129c587e6ccc8df39956c5b7aac65a25"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-aarch64-apple-darwin"
+      sha256 "830ec9a6e76db355b414dd949c0df2e24ecb843770f819d30e96393764c9af9e"
     end
 
     def install
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-x86_64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-x86_64-apple-darwin")
         bin.install filename => "git-repo-name"
       end
 
       if Hardware::CPU.arm?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-aarch64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-aarch64-apple-darwin")
         bin.install filename => "git-repo-name"
       end
     end
@@ -33,23 +33,23 @@ class GitRepoName < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-aarch64-unknown-linux-gnu"
-      sha256 "25655d071e2c06b37e7b5f8e9829f28c3132f15268548bf4b8e721f79ba8e3e9"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-aarch64-unknown-linux-gnu"
+      sha256 "e22b6d2ee5805ed2abb327b4296f4ce85c24412cafd0dda88053804f272fddc5"
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-x86_64-unknown-linux-gnu"
-      sha256 "04a1835940997cecb4fc8c214d56bac2cba7ddd371330bb959d9ab5e711c0360"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-x86_64-unknown-linux-gnu"
+      sha256 "433a40b7d5e90f30d559160e541238bab6fa6c17069005c63758a02d68ef94e2"
     end
 
     def install
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-aarch64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-aarch64-unknown-linux-gnu")
         bin.install filename => "git-repo-name"
       end
 
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.0/git-repo-name-0.1.0-x86_64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.1/git-repo-name-0.1.1-x86_64-unknown-linux-gnu")
         bin.install filename => "git-repo-name"
       end
     end
