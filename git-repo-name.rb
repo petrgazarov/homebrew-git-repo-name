@@ -4,54 +4,74 @@
 class GitRepoName < Formula
   desc "CLI tool to sync local git directory name with remote repository name"
   homepage "https://github.com/petrgazarov/git-repo-name"
-  version "0.1.3"
+  version "0.1.4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-x86_64-apple-darwin"
-      sha256 "f42c8f6c4116b4e9cdeaf9b652b2195eb11a5896cac3ea01928e4aa1d39c2d6c"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-x86_64-apple-darwin"
+      sha256 "e645ca7f64d670053b54791ae24baa81757fcafe5284e193e946a487cf1ad5c1"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-aarch64-apple-darwin"
-      sha256 "e6190ad83b91dfaeaad94909c49c9fe0bcc0416d819bb4227a8f0dc1dda73f8e"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-aarch64-apple-darwin"
+      sha256 "d6cd502475ebd955eeb7341535f8122530fadd9428b94b879cc00ed53b05c638"
     end
 
     def install
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-x86_64-apple-darwin")
-        bin.install filename => "git-repo-name"
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-x86_64-apple-darwin")
+        bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.arm?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-aarch64-apple-darwin")
-        bin.install filename => "git-repo-name"
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-aarch64-apple-darwin")
+        bin.install filename => "git-repo-name-bin"
       end
+      
+      # Install the shell wrapper
+      (bin/"git-repo-name").write <<~EOS
+        #!/bin/sh
+        # This shell script wrapper handles directory changes when using git-repo-name
+        exec /bin/sh "#{share}/git-repo-name/git-repo-name.sh" "$@"
+      EOS
+      
+      chmod 0755, bin/"git-repo-name"
+      (share/"git-repo-name").install "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name.sh" => "git-repo-name.sh"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-aarch64-unknown-linux-gnu"
-      sha256 "ab25e3d5f1957291f6bb04ede1afda86f364d3e17cf36f779a6b1aed9a41fc71"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-aarch64-unknown-linux-gnu"
+      sha256 "416aa222feae94ef72937b3d4303f29521193086b46fbafd1a841d74f29c3a94"
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-x86_64-unknown-linux-gnu"
-      sha256 "da06a0170f69e02a1bef4944d8696c89698e93708c35ff6722a3e4cdced07e25"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-x86_64-unknown-linux-gnu"
+      sha256 "ad4cf882583f0170edef709815495c43c783b7a324a76c6d797de9cb30946c30"
     end
 
     def install
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-aarch64-unknown-linux-gnu")
-        bin.install filename => "git-repo-name"
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-aarch64-unknown-linux-gnu")
+        bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.3/git-repo-name-0.1.3-x86_64-unknown-linux-gnu")
-        bin.install filename => "git-repo-name"
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name-0.1.4-x86_64-unknown-linux-gnu")
+        bin.install filename => "git-repo-name-bin"
       end
+      
+      # Install the shell wrapper
+      (bin/"git-repo-name").write <<~EOS
+        #!/bin/sh
+        # This shell script wrapper handles directory changes when using git-repo-name
+        exec /bin/sh "#{share}/git-repo-name/git-repo-name.sh" "$@"
+      EOS
+      
+      chmod 0755, bin/"git-repo-name"
+      (share/"git-repo-name").install "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.4/git-repo-name.sh" => "git-repo-name.sh"
     end
   end
 
