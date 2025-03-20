@@ -4,34 +4,34 @@
 class GitRepoName < Formula
   desc "CLI tool to sync local git directory name with remote repository name"
   homepage "https://github.com/petrgazarov/git-repo-name"
-  version "0.1.6"
+  version "0.1.7"
   license "MIT"
   
   resource "shell_script" do
-    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name.sh"
-    version "0.1.6"
-    sha256 "1edcc3db162fabd044bc6a0637f8fbe2465ad09cadf56d5b0ae037814f6e70e5"
+    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name.sh"
+    version "0.1.7"
+    sha256 "a7381aec3bd23d9687790cac3a3fd30127139748082b6e6bac4d076a05f1657e"
   end
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-apple-darwin"
-      sha256 "073fc6e3a1413837c6ac26518059ff5ae711eeda4d1d6d3b29f3601f16521423"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-x86_64-apple-darwin"
+      sha256 "f5128339bb85db0f67c7425cef876a0eb45415ecd95f5cdad4954df19ae0aed8"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-apple-darwin"
-      sha256 "713bfbec6579238cdd6776d3b5b79eb1bc11ce6a2dc8c6c18e5c7b5f7332c190"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-aarch64-apple-darwin"
+      sha256 "1f9dc09a1ae16ac2bdf07a11dfb7a7fca606a447ade9a9e2f7468c7dcd19b7aa"
     end
 
     def install
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-x86_64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.arm?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-aarch64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
       
@@ -48,28 +48,43 @@ class GitRepoName < Formula
       EOS
       
       chmod 0755, bin/"git-repo-name"
+    end
+
+    def caveats
+      <<~EOS
+        By default, git-repo-name will print output and process directory changes,
+        but cannot automatically update your working directory when executed as a command.
+
+        For automatic directory changes (when using 'git repo-name pull'), 
+        add the following line to your shell profile (such as ~/.bashrc or ~/.zshrc):
+
+          source "$(brew --prefix)/share/git-repo-name/git-repo-name.sh"
+
+        After sourcing, reopening your terminal, or running 'source ~/.bashrc',
+        directory changes will happen automatically.
+      EOS
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-unknown-linux-gnu"
-      sha256 "4a525a57caa64079d7151a07a64b534669b096505ef3edb6bd2a293a91e295c6"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-aarch64-unknown-linux-gnu"
+      sha256 "c1b7b3b78c1be6de9a081d5a3462812c1f02c3703ce46f8b57fa10bc4428a557"
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-unknown-linux-gnu"
-      sha256 "860a4946fe261f919464e1c5e55bd8b9f831ebfc80939756b2a095f99940ff69"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-x86_64-unknown-linux-gnu"
+      sha256 "6c138e56fd0c116d0e4022c0e3920e2866ff7e8919c592787ef58ba6d3013e33"
     end
 
     def install
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-aarch64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.7/git-repo-name-0.1.7-x86_64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
       
@@ -86,6 +101,21 @@ class GitRepoName < Formula
       EOS
       
       chmod 0755, bin/"git-repo-name"
+    end
+
+    def caveats
+      <<~EOS
+        By default, git-repo-name will print output and process directory changes,
+        but cannot automatically update your working directory when executed as a command.
+
+        For automatic directory changes (when using 'git repo-name pull'), 
+        add the following line to your shell profile (such as ~/.bashrc or ~/.zshrc):
+
+          source "$(brew --prefix)/share/git-repo-name/git-repo-name.sh"
+
+        After sourcing, reopening your terminal, or running 'source ~/.bashrc',
+        directory changes will happen automatically.
+      EOS
     end
   end
 
