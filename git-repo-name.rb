@@ -4,33 +4,34 @@
 class GitRepoName < Formula
   desc "CLI tool to sync local git directory name with remote repository name"
   homepage "https://github.com/petrgazarov/git-repo-name"
-  version "0.1.5"
+  version "0.1.6"
   license "MIT"
   
   resource "shell_script" do
-    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name.sh"
-    version "0.1.5"
+    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name.sh"
+    version "0.1.6"
+    sha256 "1edcc3db162fabd044bc6a0637f8fbe2465ad09cadf56d5b0ae037814f6e70e5"
   end
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-x86_64-apple-darwin"
-      sha256 "299c04926e7641cd15dd7608f684aeaba74dc6c435a30f50dd7e53b7972eef7c"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-apple-darwin"
+      sha256 "073fc6e3a1413837c6ac26518059ff5ae711eeda4d1d6d3b29f3601f16521423"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-aarch64-apple-darwin"
-      sha256 "fdafa1a5ea8bd32808a424b3b37eefce348e57e32a8bb7e9945cf75e3a8c16ab"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-apple-darwin"
+      sha256 "713bfbec6579238cdd6776d3b5b79eb1bc11ce6a2dc8c6c18e5c7b5f7332c190"
     end
 
     def install
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-x86_64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.arm?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-aarch64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
       
@@ -52,23 +53,23 @@ class GitRepoName < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-aarch64-unknown-linux-gnu"
-      sha256 "fbf0b4604ee02e141ab4308a6e644ed1793027d7530f3efb9baf13b3416a9ac2"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-unknown-linux-gnu"
+      sha256 "4a525a57caa64079d7151a07a64b534669b096505ef3edb6bd2a293a91e295c6"
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-x86_64-unknown-linux-gnu"
-      sha256 "c4cf9796375ee2159a452bfc70260cf5b8d0fe0fde6d47b0ee4e8a5a66c8f40e"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-unknown-linux-gnu"
+      sha256 "860a4946fe261f919464e1c5e55bd8b9f831ebfc80939756b2a095f99940ff69"
     end
 
     def install
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-aarch64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-aarch64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.5/git-repo-name-0.1.5-x86_64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.6/git-repo-name-0.1.6-x86_64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
       
