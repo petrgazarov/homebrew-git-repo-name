@@ -4,34 +4,34 @@
 class GitRepoName < Formula
   desc '"git repo-name" – CLI to sync repository name between local and remote'
   homepage "https://github.com/petrgazarov/git-repo-name"
-  version "0.1.9"
+  version "0.1.10"
   license "MIT"
   
   resource "shell_script" do
-    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name.sh"
-    version "0.1.9"
-    sha256 "a7381aec3bd23d9687790cac3a3fd30127139748082b6e6bac4d076a05f1657e"
+    url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name.sh"
+    version "0.1.10"
+    sha256 "66a0c43e33f3925856abf11d313ddc69cc4b886642f6b4d7815bba10bafb5e23"
   end
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-x86_64-apple-darwin"
-      sha256 "84d7c5091dc2b4027f82a7d9c71be0e8a3a3a897806a30b14aa1a60f17747a32"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-x86_64-apple-darwin"
+      sha256 "d479b7a3786bb89770ced0f439211eecbb5073628569a1d96ae1b2a1fc129980"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-aarch64-apple-darwin"
-      sha256 "98568ff405f11ff5814bd4e1780798670a74edddf10b9db57caae645732af6de"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-aarch64-apple-darwin"
+      sha256 "b03d0160e26422563d846e0b3c1816ced634b54e1c2a4e88347f4c630d49763f"
     end
 
     def install
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-x86_64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-x86_64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.arm?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-aarch64-apple-darwin")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-aarch64-apple-darwin")
         bin.install filename => "git-repo-name-bin"
       end
       
@@ -61,23 +61,23 @@ class GitRepoName < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-aarch64-unknown-linux-gnu"
-      sha256 "6d7228f1477ee0784bad1c414b540a0e24481723880a6b316ca2270ee2cdef3f"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-aarch64-unknown-linux-gnu"
+      sha256 "1bb47fd41db4d169aaffdb3cf04fae7ca30641580a496dfd5e83f8c1cc04e8af"
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-x86_64-unknown-linux-gnu"
-      sha256 "a8ce1f21d081cc8070fd698c297c2a3505cacdbe7354cb53113aedf9a5ba55ca"
+      url "https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-x86_64-unknown-linux-gnu"
+      sha256 "211c1f9a14c0e8be20034c648443dcbd534ea1b0dc9f768d6558d2030747e152"
     end
 
     def install
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-aarch64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-aarch64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
 
       if Hardware::CPU.intel?
-        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.9/git-repo-name-0.1.9-x86_64-unknown-linux-gnu")
+        filename = File.basename("https://github.com/petrgazarov/git-repo-name/releases/download/0.1.10/git-repo-name-0.1.10-x86_64-unknown-linux-gnu")
         bin.install filename => "git-repo-name-bin"
       end
       
